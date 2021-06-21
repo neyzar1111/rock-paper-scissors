@@ -1,35 +1,14 @@
 (function(){
+    const show = document.querySelector(".show-container");
+    const bdy = document.querySelector(".result-container");
+    const res = document.querySelector(".result");
+    const setQuantity = document.querySelector("#setQ");
+    const timesToPlayText = document.querySelector(".times-to-play-show p");
+    let elemId;
+    let randomWord;
 
-    let bgColors = [" linear-gradient(\n" + "90deg\n" + ", #cfecd0, #a0cea7, #9ec0db)", "linear-gradient(\n" + " 90deg\n" + ", #cfecd0, #ffc5ca)", "linear-gradient(\n" + "90deg\n" + ", #ee5c87, #ffc5ca, #d587b3)"]
-    document.querySelector("#setQbtn").addEventListener("click", startGame);
-
-
-    function startGame(){
-        const setQ = +document.querySelector("#setQ").value;
-        if (setQ > 0){
-            document.querySelector(".times-to-play-show p").innerHTML = `We will play ${setQ} times, let's go!`;
-            document.querySelectorAll('.g-btn').forEach(item =>{
-                item.addEventListener('click', checkGame);
-            });
-            let clickCounter = 0;
-            let winCounter = 0;
-            let loseCounter = 0;
-
-            function checkGame(){
-                clickCounter ++;
-                //getting elements
-                const show = document.querySelector(".show-container");
-                const bdy = document.querySelector(".result-container");
-                const res = document.querySelector(".result");
-                let elemId = this.id;
-                if(clickCounter <= setQ){
-                    //random word
-                    const words = ['rock','paper','scissors','lizard','spock'];
-                    const num = Math.floor(Math.random() * words.length);
-                    const randomWord = words[num];
-                    // show item that user chose and random item
-                    const showItems = ()=>{
-                        return (`
+    const showItems = ()=>{
+        return (`
                    <div class="userShowItem">
                    <h3>You score ${winCounter}</h3>
                    <h4>Your  choice </h4>
@@ -45,10 +24,38 @@
                        <span class="fa fa-hand-${randomWord}-o fa-fw fa-2x"></span>
                     </button>
                     </div> 
-                `);};
+        `);
+    };
 
+    let bgColors = [" linear-gradient(\n" + "90deg\n" + ", #cfecd0, #a0cea7, #9ec0db)", "linear-gradient(\n" + " 90deg\n" + ", #cfecd0, #ffc5ca)", "linear-gradient(\n" + "90deg\n" + ", #ee5c87, #ffc5ca, #d587b3)"]
+
+    document.querySelector("#setQbtn").addEventListener("click", startGame);
+
+    let clickCounter = 0;
+    let winCounter = 0;
+    let loseCounter = 0;
+
+    function startGame(){
+        const setQ = +setQuantity.value;
+
+        if (setQ > 0){
+            timesToPlayText.innerHTML = `We will play ${setQ} times, let's go!`;
+            document.querySelectorAll('.g-btn').forEach(item =>{
+                item.addEventListener('click', checkGame);
+            });
+
+
+            function checkGame(){
+                    clickCounter ++;
+                    elemId = this.id;
+                    let newSetq = setQ + 1;
+                if(clickCounter < newSetq){
+                    //random word
+                    const words = ['rock','paper','scissors','lizard','spock'];
+                    const num = Math.floor(Math.random() * words.length);
+                     randomWord = words[num];
+                    // show item that user chose and random item
                     res.innerHTML = "";
-
 
                     if(randomWord === "scissors" && elemId === "rock"||
                         randomWord === "spock" && elemId === "rock"||
@@ -75,43 +82,29 @@
                         loseCounter ++;
                         show.innerHTML = showItems();
                     }
-                    let resBtn = document.querySelector(".resBtn");
-                    resBtn.style.display = "block";
 
-                    resBtn.addEventListener("click", function(){
-                        const resultItems = ()=>{
-                            return (`
-                       <div class="userShowItem">
-                            <h3>You score ${winCounter}</h3>
-                       </div>
-                        
-                        <div class="computerShowItem">
-                            <h3>Computer score ${loseCounter}</h3>
-                        </div> 
-                        `);}
+                }
+                if (setQ === clickCounter){
 
-                        const  showEnd = (result, color) =>{
-                            res.innerHTML = result;
-                            bdy.style.background = color;
-                        }
+                    const  showEnd = (result, color) =>{
+                        res.innerHTML = result;
+                        bdy.style.background = color;
+                    }
 
-                        let score = winCounter - loseCounter;
-                        bdy.style.color = "#7952B3";
-                        show.innerHTML = resultItems();
+                    let score = winCounter - loseCounter;
+                    bdy.style.color = "#7952B3";
 
-                        if(score > 0){
-                            showEnd("You win!", bgColors[0]);
-                        } else if (score === 0){
-                            showEnd("Draw!" ,  bgColors[1]);
-                        } else{
-                            showEnd("lost!" ,  bgColors[2]);
-                        }
-                    })
+                    if(score > 0){
+                        showEnd("You win!", bgColors[0]);
+                    } else if (score === 0){
+                        showEnd("Draw!" ,  bgColors[1]);
+                    } else{
+                        showEnd("lost!" ,  bgColors[2]);
+                    }
                 }
 
             }
         }
-
     }
 
 

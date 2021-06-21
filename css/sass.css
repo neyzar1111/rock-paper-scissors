@@ -84,28 +84,27 @@ h2 {
   width: 100%;
   margin: calc(10px + 100px);
 }
-.main-cont .main-inner .result-area .result-container {
+.main-cont .main-inner .result-area .result-container, .main-cont .main-inner .result-area .final-result-container {
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 80%;
   min-height: 200px;
   margin: 0 auto;
 }
-.main-cont .main-inner .result-area .result-container .result {
+.main-cont .main-inner .result-area .result-container .result, .main-cont .main-inner .result-area .final-result-container .result {
   font-size: 2em;
 }
-.main-cont .main-inner .result-area .result-container .show-container {
+.main-cont .main-inner .result-area .result-container .show-container, .main-cont .main-inner .result-area .final-result-container .show-container {
   display: flex;
   justify-content: space-evenly;
 }
-.main-cont .main-inner .result-area .result-container .show-container div h4 {
+.main-cont .main-inner .result-area .result-container .show-container div h4, .main-cont .main-inner .result-area .final-result-container .show-container div h4 {
   margin: 10px;
 }
-.main-cont .main-inner .result-area .result-container .show-container div button {
+.main-cont .main-inner .result-area .result-container .show-container div button, .main-cont .main-inner .result-area .final-result-container .show-container div button {
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
 .resBtn {
   position: relative;
   display: inline-block;
