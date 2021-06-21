@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <!--  my styles-->
+    <link rel='stylesheet' href="css/reset.css">
+    <link rel='stylesheet' href="css/sass.css">
+    <!--  google fonts      -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital@1&display=swap" rel="stylesheet">
+
+    <title>RPS</title>
+</head>
+<body>
+    <header>
+        <h1>Rock paper scissors</h1>
+    </header>
+    <section class="main-cont">
+        <main class="main-inner">
+
+            <aside>
+                <img src="https://sandbox.dodona.be/en/activities/1647887074/description/K-_VmNDgrR7VpHdu/media/spock.jpg">
+            </aside>
+
+            <div class="count-container">
+                <h4> How many times do you want to play?</h4>
+                <label for="setQ">Enter here:</label>
+                <input type="number" id="setQ">
+                <button id="setQbtn" class="Button js-button" >
+                    Play
+                </button>
+                <div class="times-to-play-show">
+                    <p></p>
+                </div>
+            </div>
+            <h2> Choose your button to start a game</h2>
+
+            <article class="user-btn-wrap">
+
+               <button class="items-column g-btn" id="rock">
+                   <span class="fa fa-hand-rock-o fa-fw fa-2x"></span>
+               </button>
+
+               <button class="items-column g-btn" id="paper">
+                   <span class="fa fa-hand-paper-o fa-fw fa-2x"></span>
+               </button>
+
+               <button class="items-column g-btn" id="scissors">
+                   <span class="fa fa-hand-scissors-o fa-fw fa-2x"></span>
+               </button>
+
+                <button class="items-column g-btn" id="lizard">
+                    <span class="fa fa-hand-lizard-o fa-fw fa-2x"></span>
+                </button>
+
+                <button class="items-column g-btn" id="spock">
+                    <span class="fa fa-hand-spock-o fa-fw ghost"></span>
+                </button>
+           </article>
+            <button class="resBtn" style="display:none;">Result</button>
+
+            <section class="result-area">
+                <div class="result-container">
+                    <h3 class="result">Result will be here...</h3>
+                    <div class="show-container">
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </section>
+    <!-- Scripts:   JS-->
+    <script src="js/script.js"></script>
+</body>
+</html>
